@@ -6,7 +6,9 @@ This is a donation page for you to contribute to my projects.
 #
 
 [Base theme Page](https://codepen.io/dspstudio/pen/mERQWw)
-[Cryptoc Payment Service](https://depay.fi/documentation/donations)
+
+[Crypto Payment Service](https://depay.fi/documentation/donations)
+
 [Payapal Api](https://developer.paypal.com/docs/checkout/standard/integrate/)
   
 ## Author
