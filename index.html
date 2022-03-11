@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+    <div class="donate">
+        <div class="donate-black">
+          <h1><span>$</span> Donate</h1>
+          <div class="donate-avatar">
+            <img src="https://felipemateus.com/wp-content/uploads/2021/06/avatar_transparent.png" width="60" />
+            <h3>Felipe Mateus</h3>
+          </div>
+          <p>Your contribution is vital to the success of our initiative.<br>Choose the amount you wish to donate with paypal or Cryptocurrency. </p>
+        </div>
+        <div class="donate-blue">
+          <h3>Donation amount*</h3>
+          <div class="donate-amount-box">
+            <div class="donate-amount">
+              <div class="denomination selected">
+                <input autocomplete="off" type="radio" name="amount" id="amount5" value="5" checked="">
+                <label for="amount5">$5</label>
+              </div>
+              <div class="denomination">
+                <input autocomplete="off" type="radio" name="amount" id="amount10" value="10">
+                <label for="amount10">$10</label>
+              </div>
+              <div class="denomination">
+                <input autocomplete="off" type="radio" name="amount" id="amount15" value="15">
+                <label for="amount15">$15</label>
+              </div>
+              <div class="denomination">
+                <input autocomplete="off" type="radio" name="amount" id="amount25" value="25">
+                <label for="amount25">$25</label>
+              </div>
+              <div class="denomination">
+                <input autocomplete="off" type="radio" name="amount" id="amount50" value="50">
+                <label for="amount50">$50</label>
+              </div>
+              <div class="denomination">
+                <input autocomplete="off" type="radio" name="amount" id="amount100" value="100">
+                <label for="amount100">$100</label>
+              </div>
+            </div>
+            <div class="denomination-other">
+                <input autocomplete="off" type="text" name="amount" value="" placeholder="Enter Other Amount">
+              </div>
+          </div>
+        </div>
+        <!--<div class="donate-black donate-type">
+          <h3>Donation type*</h3>
+          <label>
+                      <input type="radio" name="donation_type" value="single" checked="checked" autocomplete="off" class="required">
+                      One-Time
+          </label>
+          <label>
+                      <input type="radio" name="donation_type" value="recurring" autocomplete="off" class="required">
+                      Monthly
+          </label>
+        </div> -->
+        <div class="donate-blue donate-payment">
+          <h3>Payment Method</h3>
+          <div>
+            <label>
+              <input type="radio" name="payment" value="paypal" checked="checked" autocomplete="off">PayPal
+            </label>
+            <label>
+              <input type="radio" name="payment" value="crypto" autocomplete="off">Cryptocurrency
+            </label>
+          </div>
+          <div class="donate-submit">
+            <button type="submit" autocomplete="off">Donate $5</button>
+            <p><small>Please note that contributions are not tax-deductible.</small></p>
+          </div>
+          <div class="hide" id="paypal-button-container"></div>
+
+
+          <div class="hide" id="crypto-button-container">
+
+            <div
+            class="DePayButton"
+            label="Donate"
+            widget="Donation"
+            configuration='{
+                "integration": "f5bf3d3d-cbf0-43dd-9147-bc5adacc9c5c",
+                "currency": "USD",
+                "accept":[
+                    {
+                    "blockchain": "ethereum",
+                    "token": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                    "receiver": "0xc08496449b009a501772478c119ecef9c1323760"
+                    }, {
+                    "blockchain": "ethereum",
+                    "token": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "receiver": "0xc08496449b009a501772478c119ecef9c1323760"
+                    }, {
+                    "blockchain": "ethereum",
+                    "token": "0x4Fabb145d64652a948d72533023f6E7A623C7C53",
+                    "receiver": "0xc08496449b009a501772478c119ecef9c1323760"
+                    }
+                ]}'
+            ></div>
+            <script src="https://integrate.depay.fi/buttons/v6.js"></script>
+            <noscript><a href="https://depay.fi">Web3 Payments</a> are currently not supported without JavaScript enabled.</noscript>
+            <script>DePayButtons.init({document: document});</script>
+         </div>
+        </div>
+      </div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js" type="text/javascript" ></script>
+<script src="https://www.paypal.com/sdk/js?client-id=ATQwXvvkqjbT21vPEVxcuwICnifV0HG4GVHxCQG-N58eRx-VtS8HtD0uO527lohs0i384YsyywRHaig7&currency=USD"></script>
+
+<script>
+paypal.Buttons({
+    createOrder: function(data, actions) {
+        // Set up the transaction
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: donateValue
+                }
+            }]
+        });
+    }
+}).render('#paypal-button-container');
+</script>
+<script>
+var donateValue = '5.';
+$(".denomination").click(function (event) {
+    $(".denomination").removeClass("selected").prop("checked", false);
+    $(".denomination-other input").removeClass("selected").val("");
+    $(this).addClass("selected");
+    $(this).children(":first").prop("checked", true);
+    $("button").text("Donate $" + $(this).children(":first").val());
+    donateValue =  $(this).children(":first").val();
+});
+  
+  $(".denomination-other input").on("keypress", function (event) {
+    // allow only int values
+    // TODO: remove leading 0
+    var regex = new RegExp("^[0-9]+$");
+    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+    if (!regex.test(key)) {
+      event.preventDefault();
+      return false;
+    }
+
+    value = $(this).val() + key;
+  
+    $(".denomination").removeClass("selected").prop("checked", false);
+    $(this).addClass("selected");
+    $("button").text("Donate $" + value);
+    donateValue = value;
+  });
+
+  $("button").click( ()=>{
+    const paymentType =  $("input[name='payment']:checked").val();
+    switch(paymentType){
+        case 'paypal':
+            $('#paypal-button-container').removeClass('hide');
+           
+            $('#crypto-button-container').addClass('hide');
+        break;
+        case 'crypto':
+            $('#paypal-button-container').addClass('hide');
+            $('#crypto-button-container').removeClass('hide');        
+    }
+   
+  })
+</script>
+</body>
+</html>
