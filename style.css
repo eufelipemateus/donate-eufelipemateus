@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,700,300);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600);
 body {
-  background-color: #24282e;
+  background-color: #D5E0EB;
   font-family: "Open Sans", sans-serif;
   display: flex;
   justify-content: center;
@@ -123,6 +123,7 @@ body {
     border-color: #1f86e0;
     background-color: #FFF;
     border-style: solid;
+    padding: 10%;
     border-width: 5px;
 
 }
