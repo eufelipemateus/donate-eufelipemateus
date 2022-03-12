@@ -127,6 +127,15 @@ body {
     border-width: 5px;
 
 }
+.info{
+    text-align: justify;
+}
+
+.info a {
+    font-family: "Open Sans", sans-serif;;
+    color: #FFF;
+    font-weight: bold;  
+}
 
 .donate-type label,
 .donate-payment label {
