@@ -117,8 +117,6 @@ href='https://www.paypal.com/sdk/js?client-id=ATQwXvvkqjbT21vPEVxcuwICnifV0HG4GV
             <p><small>Please note that contributions are not tax-deductible.</small></p>
           </div>
           <div class="hide" id="paypal-button-container"></div>
-
-
           <div class="hide" id="crypto-button-container">
 
             <div
@@ -147,7 +145,7 @@ href='https://www.paypal.com/sdk/js?client-id=ATQwXvvkqjbT21vPEVxcuwICnifV0HG4GV
             <script src="https://integrate.depay.fi/buttons/v6.js"></script>
             <noscript><a href="https://depay.fi">Web3 Payments</a> are currently not supported without JavaScript enabled.</noscript>
             <script>DePayButtons.init({document: document});</script>
-         </div>
+          </div>
         </div>
       </div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6/dist/jquery.min.js" type="text/javascript" ></script>
@@ -201,14 +199,12 @@ $(".denomination").click(function (event) {
     switch(paymentType){
         case 'paypal':
             $('#paypal-button-container').removeClass('hide');
-           
             $('#crypto-button-container').addClass('hide');
         break;
         case 'crypto':
             $('#paypal-button-container').addClass('hide');
             $('#crypto-button-container').removeClass('hide');        
     }
-   
   })
 </script>
 </body>
