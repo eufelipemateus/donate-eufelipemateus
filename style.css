@@ -24,7 +24,6 @@ body {
 .donate h3 {
   font-size: 14px;
   font-weight: 300;
-  margin-bottom: 30px;
 }
 
 .denomination {
@@ -123,7 +122,6 @@ body {
     border-color: #1f86e0;
     background-color: #FFF;
     border-style: solid;
-    padding: 10%;
     border-width: 5px;
 
 }
@@ -147,13 +145,14 @@ body {
 .donate-blue {
   background-color: #1e252d;
   padding: 25px;
+  margin-top: 10%;
 }
 
 .donate-black {
   padding: 25px;
 }
 
-.donate-submit button {
+.donate-submit a {
   font-family: "Oswald", sans-serif;
   width: 100%;
   background-color: #1f86e0;
@@ -165,6 +164,15 @@ body {
   margin: 30px 0;
   text-transform: uppercase;
   cursor: pointer;
+
+
+  display: inline-block;
+  box-sizing: border-box;
+  appearance: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-align: center;
+  text-decoration: none;
 }
 
 .donate-submit small {
